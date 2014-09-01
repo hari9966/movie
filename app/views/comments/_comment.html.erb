@@ -1,0 +1,18 @@
+<div style="background-color:yellow;width=20px;">
+  <h4>Review by <%= comment.commenter_name %></h4>
+  <p class="comment"><h4 style="colo:red";>Description:</h4><%= comment.description %></p>
+  <p class="comment">Rating:
+  <% if comment.rating ==1  %>
+    <div class="rating">
+      <span>☆</span>
+    </div>
+  <% elsif comment.rating == 2 %>
+    <div class="rating"><span>☆</span><span>☆</span></div>
+  <% elsif comment.rating == 3 %>
+    <div class="rating"><span>☆</span><span>☆</span><span>☆</span></div>
+  <% elsif comment.rating == 4 %>
+    <div class="rating"><span>☆</span><span>☆</span><span>☆</span><span>☆</span></div>
+  <% elsif comment.rating == 5 %>
+    <div class="rating"><span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span></div>
+  <% end %>
+</div>

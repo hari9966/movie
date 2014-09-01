@@ -1,0 +1,19 @@
+<%= current_user.email %>
+<table>
+  <tr>
+    <th>tickets</th>
+    <th>moviename</th>
+    <th>theatername</th>
+    <th>showtime</th>
+    <th>price</th>
+    <th>seatno</th>
+  </tr>
+  <tr>
+    <td><%= @ticket.tickets %> </td>
+    <td><%= @ticket.moviename %> </td>
+    <td><%= @ticket.theatername %> </td>
+    <td><%= @ticket.showtime %> </td>
+    <td><%= @ticket.price %> </td>
+    <td><%= @ticket.seatno %></td> 
+  </tr>
+</table>

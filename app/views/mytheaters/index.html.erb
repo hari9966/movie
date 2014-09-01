@@ -1,0 +1,26 @@
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>TheaterName</th>
+      <th>MovieId</th>
+      <th>shows</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @theaters.each do |theater| %>
+      <tr>
+        <td><%= theater.id %></td>
+        <td><%= theater.theatername %></td>
+        <td><%= theater.movie_id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div>
+<h3>Import a CSV File</h3>
+  <%= form_tag import_mytheaters_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import CSV" %>
+  <% end %>
+</div>

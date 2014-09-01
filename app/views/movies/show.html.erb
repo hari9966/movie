@@ -1,0 +1,91 @@
+<p>
+  <strong>SLno:</strong>
+  <%= @movie.slno %>
+</p>
+<p>
+  <strong>NAME:</strong>
+  <%= @movie.name %>
+</p>
+<p>
+  <strong>DECSRIPTION:</strong>
+  <%= @movie.description %>
+</p>
+<p>
+  <strong>IMAGE:</strong>
+  <%=image_tag @movie.avatar.url(:small) %>
+</p>
+<p>
+  <strong>Trailer:</strong>
+  <%= video_tag @movie.video.url, :autoplay => false, :size => "480x320", :controls => true %>
+</p>
+<p>
+  <strong>Average Rating:</strong>
+  <%= @movie.average_rating %>
+</p>
+
+<% if @slide.present? %>
+<p>
+    <h2>gallery</h2>
+    <div class="html5gallery" data-skin="darkness"  data-width="480" data-height="200">
+      <% @slide.each do |slide| %>
+      <%= image_tag slide.photo.url %>
+      <% end %>
+    </div>
+</p>
+<%end%>
+<p>
+  <a href="#" id="show_theaters">Show Theaters</a>
+</p>
+<div id="theaters">
+  <table>
+   <thead>
+    <tr>
+    <th>Theaters</th>
+    <th>ShowTimings</th>
+    </tr>
+  </thead>
+   <tbody>
+      <% @theaters.each do |theater| %>
+      <tr>
+      <td> <%= theater.theatername  %></td> 
+      <% theater.showtheaters.each do |s| %>
+      <td><%= link_to s.show.showtime,new_movie_showtheater_ticket_path(@movie,s)%></td>
+      <% end %>
+      </tr>
+      <% end %>
+  </tbody>
+  </table>
+</div>
+<h2>Reviews</h2>
+<h3>Reviews (<%= @movie.comments.size %>)</h3>
+<p>
+  <%= render @movie.comments %>
+</p>
+<h2>Add a Review:</h2>
+<%= form_for([@movie, @movie.comments.build]) do |f| %>
+  <p>
+    <%= f.label :Name %><br>
+    <%= f.text_field :commenter_name %>
+  </p>
+  <p>
+    <%= f.label :Reviews %><br>
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :rating %><br/>
+    <%= f.radio_button :rating,1, {:class => "star"} %>
+    <%= f.radio_button :rating,2, {:class => "star"} %>
+    <%= f.radio_button :rating,3, {:class => "star"} %>
+    <%= f.radio_button :rating,4, {:class => "star"} %>
+    <%= f.radio_button :rating,5, {:class => "star"} %>
+  </p>
+  <p>
+    <%= f.submit "Give Review" %>
+  </p>
+<% end %>
+<%= link_to 'Back to Movies', movies_path %>
+<%= link_to 'new gallery', new_movie_gallery_path(@movie) %>
+ 
+ 
+
+

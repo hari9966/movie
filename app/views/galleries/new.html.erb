@@ -1,0 +1,12 @@
+<%= nested_form_for @gallery, :url => movie_galleries_path(@movie),:html => { :multipart => true } do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field(:name) %><br />
+  <h3> Images</h3>
+    <%= f.fields_for :images do |task| %>
+      <%= task.file_field :photo %><br />
+      <%= task.link_to_remove "Remove this Image" %>
+    <% end %>
+    <p><%= f.link_to_add "Add a image", :images %></p>
+  <%= f.submit %>
+<% end %>
+<%= link_to 'Back to Movies', movies_path %> 

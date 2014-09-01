@@ -1,0 +1,63 @@
+// Place all the styles related to the tickets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+	table{
+		width:500px;
+		height:50px;
+	}
+	table td{
+		padding:1px;
+		margin:1px;
+		border:1px solid #ccc;
+	}
+.book
+{
+background:url("/assets/WhiteSeatNew.gif") no-repeat scroll 0 0 transparent;
+height:20px;
+ width:20px;
+ 
+}
+
+.selected
+ {
+  background-image:url("/assets/GraySeatNew.gif") ;
+ 
+ }
+ .lessons {
+  
+  overflow:hidden;
+  list-style-type: none;
+  width :750px;
+  margin-left:80px;
+  margin-top:-890px;
+  HEOGHT:100%;
+ 
+   
+ 
+  
+}
+
+.lessons li {
+         padding: 0;
+        float:left;
+        list-style-position: inside;
+        width:30px;
+        
+       
+ }
+ 
+ #A11,#B11,#C11,#D11,#E11,#F11,#G11,#H11,#I11,#J11,#K11,#L11,#M11,#N11,#O11,#P11,#Q11,#R11,#S11,#T11,#U11,#V11,#W11,#X11,#Y11,#Z11
+ {
+  margin-left:121px;
+  }
+  #N13
+  {
+  margin-top:500px;
+  
+ 
+    
+    
+    
+
+ 

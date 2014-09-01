@@ -1,0 +1,9 @@
+<%= form_for(@show, :html => { :multipart => true }) do |f| %>
+  <%= f.label :Time %>
+  <%= f.text_field :showtime %>
+ <%= f.submit "Add Show" %>
+<% end %>
+<p>
+<%for s in Show.find(:all) %>
+<%= s.showtime %><br/>
+<% end %> </p>

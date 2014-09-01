@@ -1,0 +1,37 @@
+
+ <%= link_to "edit Profile", edit_user_registration_path %>
+<h1>Listing Movies</h1>
+
+<%= form_tag movies_path, :method => 'get' do %>
+<p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+<table width="600">
+  <thead>
+    
+    
+   
+  </thead>
+
+  <tbody>
+	<% @movies.each do |movie| %>
+      <tr>
+      <td><%= movie.slno %></td>
+      <td rowspan="2",colspan="2"><%= image_tag movie.avatar.url(:small),:size => "50x40" %><%= link_to     movie.name,movie %><br/><%= movie.description %></td>
+        
+        <td></td></td>
+        </tr>
+        <tr></tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+<%= will_paginate @movies %>
+
+
+

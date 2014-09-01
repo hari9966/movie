@@ -1,0 +1,18 @@
+<%= form_for(@showtheater) do |f| %>
+  <%= f.label :showid %>
+  <%= f.text_field :show_id %>
+   <%= f.label :theaterid %>
+  <%= f.text_field :theater_id %>
+ <%= f.submit "Add Show" %>
+<% end %>
+<table>
+<th>showid</th>
+<th>theaterid</th>
+
+<%for s in Showtheater.find(:all) %>
+<tr>
+<td><%= s.show_id %></td>
+<td><%= s.theater_id %></td>
+<% end %> 
+</tr>
+</table>

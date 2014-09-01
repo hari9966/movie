@@ -1,0 +1,122 @@
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
+<script>
+
+  $(function() {
+   for(j=65;j<=90;j++) 
+   {
+       for(i=1; i<=20; i++) 
+      {
+     
+      $('<li>',{id: String.fromCharCode(j)+i}).attr('title', String.fromCharCode(j)+i).addClass( "book" ).appendTo('#seatcontainer');
+             
+      }
+      }
+  });
+  
+  $(function() {
+    for (var q = 0; q < gon.k.length; q++)
+    {
+       var str =  gon.k[q];
+       $("#" + str).removeClass("book").addClass("booked");
+    }
+  });
+  
+  $(function() {
+    $('.book').click(function () {
+      $(this).toggleClass("selected");
+      var size = [];
+        $.each($('.selected'), function() {
+        size.push($(this).attr('id'));
+        });
+      var p= $(size).size();
+      var s=size.join(",")
+      $("#numoftickets").val(p);
+      $("#totaltickets").val(s);
+      var r=p*150
+      $("#rupes").val(r);
+    });
+  });
+  
+   $(document).ready(function(){
+      $("#seatcontainer li").tooltip( "option", "position" );
+    });
+    function audit_options(selected_date){
+    
+        var p=selected_date;
+       alert(selected_date);
+        $.ajax({
+          type: 'get',
+          url: '/tickets/tickets',
+          data: {select_date: p}
+        });
+ }
+    
+    
+</script>
+
+Movie Name: <%= @n %> <br/>
+Show Time : <%= @b %> <br/>
+Theater Name: <%= @c %>
+<%= form_for @ticket,url: {action: "create"} do |f| %>
+  <%= f.hidden_field :seatno,:id => "totaltickets" %>
+  <%= f.hidden_field :showtheater_id, :value => params[:showtheater_id] %>
+  <%= f.hidden_field :theatername, :value => @c %>
+  <%= f.hidden_field :moviename, :value => @n %>
+  <%= f.hidden_field :showtime, :value => @b %>
+  <%= f.label :Numoftickets %>
+  <%= f.text_field :tickets,  :id => "numoftickets" %><br/>
+  <%= f.label :TotalPrice %>
+  <%= f.text_field :price,  :id => "rupes" %></br>
+  <%= f.label :SelectDate %>
+  <%= f.select :date,(Date.today..Date.today+2),:prompt => "--select Date--" ,:id=> "date",:controller => "tickets", :action => "tickets" %>
+  <br/>
+  <%= f.submit "procced" %>
+<% end %>
+
+<%= select_tag "selecteddate", options_for_select([[Date.today], [Date.today+1]]),:prompt => "Select date", :onchange =>"audit_options(this.value)" %>
+  <p style="position: relative; top:27px; left:60px;width:42px">A1-20</p>
+  <p style="position: relative; top:13px; left:59px;width:42px">B1-20</p>
+  <p style="position: relative; top:-4px; left:59px;width:42px">C1-20</p>
+  <p style="position: relative; top:-19px; left:59px;width:42px">D1-20</p>
+  <p style="position: relative; top:-35px; left:59px;width:42px">E1-20</p>
+  <p style="position: relative; top:-50px; left:59px;width:42px">F1-20</p>
+  <p style="position: relative; top:-66px; left:59px;width:42px">G1-20</p>
+  <p style="position: relative; top:-81px; left:59px;width:42px">H1-20</p>
+  <p style="position: relative; top:-96px; left:59px;width:42px">I1-20</p>
+  <p style="position: relative; top:-112px; left:59px;width:42px">J1-20</p>
+  <p style="position: relative; top:-126px; left:59px;width:42px">K1-20</p>
+  <p style="position: relative; top:-141px; left:59px;width:42px">L1-20</p>
+  <p style="position: relative; top:-156px; left:59px;width:43px;">M1-20</p>
+  <p style="position: relative; top:-123px; left:59px;width:42px">N1-20</p>
+  <p style="position: relative; top:-137px; left:59px;width:42px">O1-20</p>
+  <p style="position: relative; top:-152px; left:59px;width:42px">P1-20</p>
+  <p style="position: relative; top:-169px; left:59px;width:42px">Q1-20</p>
+  <p style="position: relative; top:-184px; left:59px;width:42px">R1-20</p>
+  <p style="position: relative; top:-199px; left:59px;width:42px">S1-20</p>
+  <p style="position: relative; top:-215px; left:59px;width:42px">T1-20</p>
+  <p style="position: relative; top:-230px; left:59px;width:42px">U1-20</p>
+  <p style="position: relative; top:-247px; left:59px;width:42px">V1-20</p>
+  <p style="position: relative; top:-260px; left:59px;width:44px">W1-20</p>
+  <p style="position: relative; top:-276px; left:59px;width:42px">X1-20</p>
+  <p style="position: relative; top:-292px; left:59px;width:42px">Y1-20</p>
+  <p style="position: relative; top:-306px; left:59px;width:42px">Z1-20</p>
+ <ul class="lessons" id="seatcontainer" >
+  
+ </ul>
+  
+ 
+
+                 
+  
+  
+
+
+
+             
+           
+  
+           
+
+

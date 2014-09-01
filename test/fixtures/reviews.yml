@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  reviews: MyText
+  movie_id: 
+
+two:
+  reviews: MyText
+  movie_id: 
